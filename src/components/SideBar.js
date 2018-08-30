@@ -6,11 +6,12 @@ class SideBar extends Component {
 
     render() {
         return (
-            <div className="sidebar">
 
+            <div>
                 SideBar
-
             </div>
+
+
         );
 
 
