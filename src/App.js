@@ -8,9 +8,9 @@ class App extends Component {
     return (
         <div className="App" >
 
-            <div className="sidebar">
+
                 <SideBar/>
-            </div>
+
 
             <div className="map">
                 <MapContainer />
