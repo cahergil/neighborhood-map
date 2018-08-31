@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {loadGoogleMap} from '../utils/load-google-map.js';
 //https://cleverbeagle.com/blog/articles/tutorial-how-to-load-third-party-scripts-dynamically-in-javascript
-import Map from './Map.js'
 export class GoogleMap extends Component {
 
 
