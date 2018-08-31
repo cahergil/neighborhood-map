@@ -11,7 +11,7 @@ export class GoogleMap extends Component {
                     center: {lat: -34.397, lng: 150.644},
                     zoom: 8
             });
-
+            this.props.onInitMap(map);
 
         })
 
@@ -22,7 +22,7 @@ export class GoogleMap extends Component {
 
         return (
 
-            <div className="map">
+            <div className={this.props.id}>
             </div>
 
 
