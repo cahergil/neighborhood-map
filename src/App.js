@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import MapContainer from './components/MapContainer'
+import GoogleMap from './components/GoogleMap'
 import SideBar from './components/SideBar'
 
 class App extends Component {
@@ -11,10 +11,8 @@ class App extends Component {
 
                 <SideBar/>
 
+                <GoogleMap id="map"/>
 
-            <div className="map">
-                <MapContainer />
-            </div>
         </div>
     );
   }
