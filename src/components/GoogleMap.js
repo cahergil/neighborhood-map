@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//https://stackoverflow.com/questions/39056498/export-default-not-working-webpack-reactjs
 import {loadGoogleMap} from '../utils/load-google-map.js';
 //https://cleverbeagle.com/blog/articles/tutorial-how-to-load-third-party-scripts-dynamically-in-javascript
 export class GoogleMap extends Component {
