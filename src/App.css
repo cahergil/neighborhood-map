@@ -21,7 +21,7 @@
 
 .sidebar {
 
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	width: 20%;
 
 
@@ -37,24 +37,124 @@
 
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
 
 	.App {
 		display: flex;
 		flex-direction: column;
+		flex-wrap: nowrap;
 
 	}
 	.sidebar {
-		height: 15%;
-		width: 100%
+
+		height: 13%;
+		width: 100%;
+
+
 	}
 	.map {
-		height: 80%;
+		height: 87%;
 		width: 100%;
 		position:relative;
 	}
 
 
+	.sidebar-header {
+		display: flex;
+		height: 75px;
+		background: #2e3d49;
+		position: relative;
+		z-index: 11;
+	}
+	.title {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		padding-top: 20px;
+		color: white;
+	}
+
+	#closebtn {
+	    height:25px;
+	    width:35px;
+	    position: absolute;
+	    text-decoration:none;
+	    top: 17px;
+	    right: 0;
+	    font-size: 36px !important;
+	    margin-right: 10px;
+		margin-left: 20px;
+	    z-index:100;
+	    cursor:pointer;
+	    transition: background-position .3s;
+	}
+	.line1, .line2, .line3 {
+		margin-top:7px;
+		background-color:#fff;
+		width:35px;
+		height:3px;
+		display:block;
+		position:relative;
+		opacity:1.0;
+		border-radius:15%;
+		transition: all .3s;
+	}
+	.line1.active {
+	  transform: rotate(270deg);
+	  opacity:0.0;
+	  top: 10px;
+	}
+
+	.line2.active {
+	  transform: rotate(45deg);
+	  top: 3px;
+	}
+
+	.line3.active {
+	  transform: rotate(-45deg);
+	  top:-7px;
+	}
+
+	nav {
+
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		color: white;
+		z-index: 10;
+		position: relative;
 
 
+	}
+
+	.menu-list {
+		display: block;
+		background-color: #424242;
+		list-style: none;
+		padding:0;
+		margin:0;
+		transition:all 0.5s ease-in-out;
+		transform: translateY(0px);
+	}
+
+	.menu-list.hidden {
+		/* display: none; */
+		background-color: #424242;
+		list-style: none;
+		padding:0;
+		margin:0;
+		transform: translateY(-1000px);
+
+	}
+
+
+	.menu-items {
+		margin-top:10px;
+	}
+	.menu-items:nth-child(1) {
+		margin-top: 10px;
+	}
+	.menu-items:last-child {
+		margin-bottom: 20px;
+	}
 }

@@ -58,7 +58,7 @@ class App extends Component {
         <div className="App" >
 
 
-                <SideBar/>
+                <SideBar locations={this.state.locations}/>
 
                 <GoogleMap
                     id="map"
