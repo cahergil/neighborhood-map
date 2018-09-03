@@ -60,19 +60,16 @@ class App extends Component {
 
     }
 
-    updateMap = (filteredLocations) => {
+    updateMapMarkers = (filteredLocations) => {
 
         const markers = this.state.markers;
-        console.log('inside updateMap');
-        console.log(filteredLocations);
-        console.log(this.state.locations.length);
+        let bounds = new window.google.maps.LatLngBounds();
+        let counter = 0;
         let match = false;
         for (let i = 0; i < this.state.locations.length; i++) {
             const location = this.state.locations[i];
             for(let j= 0; j < filteredLocations.length; j++) {
-                 console.log('inside j');
                  if( location.title === filteredLocations[j].title ) {
-                     console.log(location.title);
                      match = true;
                      break;
                  }
@@ -81,11 +78,16 @@ class App extends Component {
             if(match === false) {
                 markers[i].setMap(null);
             } else {
+                counter++;
                 markers[i].setMap(this.map);
+                bounds.extend(markers[i].position);
                 match = false;
             }
 
         }
+        this.map.fitBounds(bounds);
+        if(counter === 1)
+            this.map.setZoom(7);
 
         this.setState({markers: markers})
 
@@ -98,7 +100,7 @@ class App extends Component {
 
 
                 <SideBar
-                    onGetFilteredLocations={this.updateMap}
+                    onGetFilteredLocations={this.updateMapMarkers}
                     locations={this.state.locations}
 
                 />
