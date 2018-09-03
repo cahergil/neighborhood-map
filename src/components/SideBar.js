@@ -23,13 +23,24 @@ class SideBar extends Component {
         for (let i = 0; i < menuIcon.length; i++) {
             menuIcon[i].classList.toggle("active");
         }
+        const map = document.querySelector('.map');
+        var styles = window.getComputedStyle(map);
 
+        if(parseInt(styles.zIndex,10) === 9) {
+            setTimeout(()=>(map.style.zIndex = 12),500);
+
+        } else {
+            map.style.zIndex = 9
+
+        }
         menu.classList.toggle('hidden');
+
 
     }
 
     filterLocations = (locations) => {
-
+        const onGetFilteredLocations = this.props.onGetFilteredLocations;
+        onGetFilteredLocations(locations);
         this.setState({filteredlocations: locations})
 
     }

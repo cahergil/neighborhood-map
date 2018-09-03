@@ -6,6 +6,10 @@ import SideBar from './components/SideBar';
 
 class App extends Component {
 
+    constructor(props) {
+        super(props);
+        this.map ={};
+    }
 
     state = {
 
@@ -29,9 +33,11 @@ class App extends Component {
         ],
         markers:[]
 
+
     }
 
     initMap = (map) => {
+        this.map = map;
         const markers = [];
         let bounds = new window.google.maps.LatLngBounds();
         for (var i = 0; i < this.state.locations.length; i++) {
@@ -51,6 +57,38 @@ class App extends Component {
         map.fitBounds(bounds);
         this.setState({ markers: markers })
 
+
+    }
+
+    updateMap = (filteredLocations) => {
+
+        const markers = this.state.markers;
+        console.log('inside updateMap');
+        console.log(filteredLocations);
+        console.log(this.state.locations.length);
+        let match = false;
+        for (let i = 0; i < this.state.locations.length; i++) {
+            const location = this.state.locations[i];
+            for(let j= 0; j < filteredLocations.length; j++) {
+                 console.log('inside j');
+                 if( location.title === filteredLocations[j].title ) {
+                     console.log(location.title);
+                     match = true;
+                     break;
+                 }
+
+            }
+            if(match === false) {
+                markers[i].setMap(null);
+            } else {
+                markers[i].setMap(this.map);
+                match = false;
+            }
+
+        }
+
+        this.setState({markers: markers})
+
     }
 
 
@@ -60,6 +98,7 @@ class App extends Component {
 
 
                 <SideBar
+                    onGetFilteredLocations={this.updateMap}
                     locations={this.state.locations}
 
                 />

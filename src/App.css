@@ -56,6 +56,7 @@
 		height: 87%;
 		width: 100%;
 		position:relative;
+		z-index: 12;
 	}
 
 
@@ -169,6 +170,7 @@
 
 	.menu-list.hidden {
 		/* display: none; */
+
 		background-color: #AA3939;
 		list-style: none;
 		padding:0;
