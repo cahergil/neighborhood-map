@@ -127,6 +127,15 @@
 
 	}
 
+	.search-input {
+		border: none;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		border-radius: 4px;
+		padding: 0.5em;
+
+	}
+
 	.menu-list {
 		display: block;
 		background-color: #424242;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import SearchLocation from './SearchLocation.js';
 
 class SideBar extends Component {
 
@@ -33,8 +33,8 @@ class SideBar extends Component {
                     </span>
                 </header>
                 <nav>
-                    {/* <input type='text' placeholder="search"></input> */}
                     <ul className="menu-list hidden">
+                        <SearchLocation />
                         {
                             locations.map( (location) => (
                                 <li className="menu-items" key={location}>
