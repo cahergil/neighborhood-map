@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchLocation from './SearchLocation.js';
+import ListItem from './ListItem.js'
 
 class SideBar extends Component {
 
@@ -38,7 +39,7 @@ class SideBar extends Component {
                         {
                             locations.map( (location) => (
                                 <li className="menu-items" key={location}>
-                                    {location}
+                                    <ListItem location={location}/>
                                 </li>
                             ))
 
