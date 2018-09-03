@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import GoogleMap from './components/GoogleMap'
-import SideBar from './components/SideBar'
+import GoogleMap from './components/GoogleMap';
+import SideBar from './components/SideBar';
+
 
 class App extends Component {
 
@@ -58,7 +59,10 @@ class App extends Component {
         <div className="App" >
 
 
-                <SideBar locations={this.state.locations}/>
+                <SideBar
+                    locations={this.state.locations}
+
+                />
 
                 <GoogleMap
                     id="map"

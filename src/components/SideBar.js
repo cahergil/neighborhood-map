@@ -5,6 +5,16 @@ import ListItem from './ListItem.js'
 class SideBar extends Component {
 
 
+    state = {
+
+        filteredlocations: []
+    }
+
+    componentWillMount() {
+
+        this.setState({filteredlocations: [...this.props.locations]})
+    }
+
     navToggle = () => {
 
         const closeBtn = document.querySelector('#closebtn');
@@ -18,10 +28,16 @@ class SideBar extends Component {
 
     }
 
+    filterLocations = (locations) => {
+
+        this.setState({filteredlocations: locations})
+
+    }
+
     render() {
         let locations = this.props.locations;
-        locations = locations.map((obj) =>  obj.title );
-        // console.log(locations);
+        let filteredLocations = this.state.filteredlocations;
+
         return (
 
             <aside className="sidebar">
@@ -35,11 +51,14 @@ class SideBar extends Component {
                 </header>
                 <nav>
                     <ul className="menu-list hidden">
-                        <SearchLocation />
+                        <SearchLocation
+                            locations={locations}
+                            onFilterLocation={this.filterLocations}
+                        />
                         {
-                            locations.map( (location) => (
-                                <li className="menu-items" key={location}>
-                                    <ListItem location={location}/>
+                            filteredLocations.map( (location) => (
+                                <li className="menu-items" key={location.title}>
+                                    <ListItem location={location.title}/>
                                 </li>
                             ))
 

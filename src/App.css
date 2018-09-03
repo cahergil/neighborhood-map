@@ -133,7 +133,28 @@
 		margin-bottom: 10px;
 		border-radius: 4px;
 		padding: 0.5em;
+		text-align: center;
+		color: #801515;
+		background-color: #ffaaaa;
+		outline-color: #801515;
 
+	}
+	/*https://stackoverflow.com/questions/7381446/center-html-input-text-field-placeholder*/
+	.search-input::-webkit-input-placeholder {
+		color: #d46a6a;
+		text-align: center;
+	}
+	.search-input:-moz-placeholder { /* Firefox 18- */
+		color: #d46a6a;
+		text-align: center;
+	}
+	.search-input::-moz-placeholder {  /* Firefox 19+ */
+		color: #d46a6a;
+		text-align: center;
+	}
+	.search-input:-ms-input-placeholder {
+		color: #d46a6a;
+		text-align: center;
 	}
 
 	.menu-list {
