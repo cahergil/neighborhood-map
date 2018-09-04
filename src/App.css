@@ -90,6 +90,25 @@ nav {
 
 }
 
+/*https://stackoverflow.com/questions/7381446/center-html-input-text-field-placeholder*/
+/*https://davidwalsh.name/html5-placeholder-css*/
+.search-input::-webkit-input-placeholder {
+	color: #d46a6a;
+	text-align: center;
+}
+.search-input:-moz-placeholder { /* Firefox 18- */
+	color: #d46a6a;
+	text-align: center;
+}
+.search-input::-moz-placeholder {  /* Firefox 19+ */
+	color: #d46a6a;
+	text-align: center;
+}
+.search-input:-ms-input-placeholder {
+	color: #d46a6a;
+	text-align: center;
+}
+
 .menu-list {
 	display: block;
 	background-color: #AA3939;
@@ -111,7 +130,7 @@ nav {
 	margin-top: 10px;
 }
 .menu-items:last-child {
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 }
 
 
