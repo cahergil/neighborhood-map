@@ -8,7 +8,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.map ={};
+        this.map = {};
     }
 
     state = {
@@ -87,16 +87,22 @@ class App extends Component {
         }
         this.map.fitBounds(bounds);
         if(counter === 0) {
-            this.map.setCenter(new window.google.maps.LatLng(40.463667,-3.74922 ))
-            this.map.setZoom(5);
+             this.map.setCenter(new window.google.maps.LatLng(40.463667,-3.74922 ))
+             this.map.setZoom(5);
+
         }
         if(counter === 1) {
             this.map.setZoom(7);
+
         }
         this.setState({markers: markers})
 
     }
 
+    updateMapBounds = () => {
+
+        console.log('bounds changed');
+    }
 
     render() {
         return (
@@ -111,6 +117,7 @@ class App extends Component {
 
                 <GoogleMap
                     id="map"
+                    onBoundsChanged={this.updateMapBounds}
                     onInitMap={this.initMap}
                 />
 

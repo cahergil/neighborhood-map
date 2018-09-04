@@ -1,3 +1,4 @@
+/*base color  http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF AA3939*/
 * {
 	margin: 0;
 	padding: 0;
@@ -25,8 +26,15 @@
 	width: 25%;
 	background-color: #AA3939;
 
+
 }
 
+.map {
+
+	width: 75%;
+	position: relative;
+
+}
 
 .sidebar-header {
 	display: flex;
@@ -45,6 +53,16 @@
 	color: white;
 }
 
+@media screen and (min-width: 1025px) {
+	.title {
+		padding-top: 0px;
+		line-height: 75px;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+}
+
 
 nav {
 
@@ -54,6 +72,7 @@ nav {
 	color: white;
 	z-index: 10;
 	position: relative;
+
 
 
 }
@@ -110,12 +129,7 @@ nav {
 	color: #550000;
 }
 
-.map {
 
-	 width: 75%;
-	 position: relative;
-
-}
 
 
 
@@ -129,8 +143,9 @@ nav {
 	}
 	.sidebar {
 
-		height: 13%;
+		height: 75px;
 		width: 100%;
+
 
 
 	}
@@ -198,6 +213,10 @@ nav {
 	  top:-7px;
 	}
 
+
+
+
+
 	nav {
 
 		display: flex;
@@ -206,7 +225,39 @@ nav {
 		color: white;
 		z-index: 10;
 		position: relative;
+		transition:all 0.5s ease-in-out;
+		transform: translateY(0px);
 
+	}
+	nav.hidden {
+
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		color: white;
+		z-index: 10;
+		position: relative;
+		transform: translateY(-1000px);
+	}
+
+	.menu-list {
+		display: block;
+		background-color: #AA3939;
+		list-style: none;
+		padding:0;
+		margin:0;
+		/* transition:all 0.5s ease-in-out;
+		transform: translateY(0px); */
+	}
+
+	 .menu-list.hidden {
+		/* display: none; */
+
+		background-color: #AA3939;
+		list-style: none;
+		padding:0;
+		margin:0;
+		/* transform: translateY(-1000px); */
 
 	}
 
@@ -239,27 +290,6 @@ nav {
 	.search-input:-ms-input-placeholder {
 		color: #d46a6a;
 		text-align: center;
-	}
-
-	.menu-list {
-		display: block;
-		background-color: #AA3939;
-		list-style: none;
-		padding:0;
-		margin:0;
-		transition:all 0.5s ease-in-out;
-		transform: translateY(0px);
-	}
-
-	.menu-list.hidden {
-		/* display: none; */
-
-		background-color: #AA3939;
-		list-style: none;
-		padding:0;
-		margin:0;
-		transform: translateY(-1000px);
-
 	}
 
 

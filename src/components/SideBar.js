@@ -18,7 +18,7 @@ class SideBar extends Component {
     navToggle = () => {
 
         const closeBtn = document.querySelector('#closebtn');
-        const menu = document.querySelector('.menu-list');
+        const menu = document.querySelector('nav');
         const menuIcon = closeBtn.children;
         for (let i = 0; i < menuIcon.length; i++) {
             menuIcon[i].classList.toggle("active");
@@ -60,8 +60,8 @@ class SideBar extends Component {
                         <span className="line3"></span>
                     </span>
                 </header>
-                <nav>
-                    <ul className="menu-list hidden">
+                <nav className="hidden">
+                    <ul className="menu-list">
                         <SearchLocation
                             locations={locations}
                             onFilterLocation={this.filterLocations}
