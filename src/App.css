@@ -141,6 +141,7 @@
 
 	}
 	/*https://stackoverflow.com/questions/7381446/center-html-input-text-field-placeholder*/
+	/*https://davidwalsh.name/html5-placeholder-css*/
 	.search-input::-webkit-input-placeholder {
 		color: #d46a6a;
 		text-align: center;
