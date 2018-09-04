@@ -100,8 +100,15 @@ class App extends Component {
     }
 
     updateMapBounds = () => {
+        const markers = this.state.markers;
+        let bounds = new window.google.maps.LatLngBounds();
+        for(let i = 0; i< this.state.markers.length; i++) {
+            bounds.extend(this.state.markers[i].position);
+        }
+        this.map.setCenter(bounds.getCenter());
+        this.map.fitBounds(bounds);
+        this.setState({markers: markers});
 
-        console.log('bounds changed');
     }
 
     render() {

@@ -4,10 +4,6 @@ import {loadGoogleMap} from '../utils/load-google-map.js';
 //https://cleverbeagle.com/blog/articles/tutorial-how-to-load-third-party-scripts-dynamically-in-javascript
 export class GoogleMap extends Component {
 
-    constructor(props) {
-        super(props);
-        this.map = {};
-    }
 
     componentDidMount() {
         loadGoogleMap(() => {
@@ -17,10 +13,10 @@ export class GoogleMap extends Component {
                     zoom: 8
             });
             this.props.onInitMap(map);
-            this.map = map;
-            console.log(window.google);
-            console.log('window.google:',window.google);
-            window.google.maps.event.addListener(this.map,'bounds_changed',this.props.onBoundsChanged);
+
+            // https://developers.google.com/maps/documentation/javascript/examples/event-domListener
+            // uses 'resize' of window object
+            window.google.maps.event.addDomListener(window,'resize',this.props.onBoundsChanged);
 
         })
 
@@ -29,7 +25,7 @@ export class GoogleMap extends Component {
 
     componentWillUnmount() {
 
-        window.google.maps.event.clearListeners(this.map,'bounds_changed');
+          window.google.maps.event.clearListeners(window,'resize');
 
     }
 
