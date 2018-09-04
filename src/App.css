@@ -22,7 +22,7 @@
 .sidebar {
 
 
-	width: 20%;
+	width: 25%;
 	background-color: #AA3939;
 
 }
@@ -30,7 +30,7 @@
 
 .sidebar-header {
 	display: flex;
-	height: 75px;
+	min-height: 75px;
 	background: #2e3d49;
 	position: relative;
 	z-index: 11;
@@ -112,7 +112,7 @@ nav {
 
 .map {
 
-	 width: 80%;
+	 width: 75%;
 	 position: relative;
 
 }

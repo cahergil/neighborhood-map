@@ -86,9 +86,13 @@ class App extends Component {
 
         }
         this.map.fitBounds(bounds);
-        if(counter === 1)
+        if(counter === 0) {
+            this.map.setCenter(new window.google.maps.LatLng(40.463667,-3.74922 ))
+            this.map.setZoom(5);
+        }
+        if(counter === 1) {
             this.map.setZoom(7);
-
+        }
         this.setState({markers: markers})
 
     }
