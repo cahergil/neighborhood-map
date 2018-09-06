@@ -148,6 +148,12 @@ nav {
 	color: #550000;
 }
 
+#infowindow {
+	max-height: 400px ;
+	width: 400px;
+	overflow-y:auto;
+}
+
 
 
 
@@ -189,6 +195,14 @@ nav {
 		text-align: center;
 		padding-top: 20px;
 		color: white;
+	}
+	@media screen and (max-width:500px) {
+
+		.title {
+			text-align: left;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
 	}
 
 	#closebtn {
@@ -338,4 +352,11 @@ nav {
 	.menu-items a:hover {
 		color: #550000;
 	}
+
+	#infowindow {
+		max-height: 200px ;
+		width: 300px;
+		overflow-y:auto;
+	}
+
 }

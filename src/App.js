@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GoogleMap from './components/GoogleMap';
 import SideBar from './components/SideBar';
-
+import WikiSearch from './utils/WikiSearch.js'
 
 class App extends Component {
 
@@ -14,21 +14,81 @@ class App extends Component {
     state = {
 
         locations:[
-         {title: 'Picos de Europa', location: {lat: 43.187216, lng: -4.821524}},
-         {title: 'Ordesa Y Monte Perdido', location: {lat: 42.627341, lng: -0.111204}},
-         {title: 'Teide', location: {lat: 28.272338, lng: -16.642508}},
-         {title: 'Caldera de Taburiente', location: {lat: 28.722222, lng: -17.876111}},
-         {title: 'Aigüestortes i Estany of Saint Maurici', location: {lat: 42.575027, lng: 0.934498}},
-         {title: 'Doñana', location: {lat: 37.042729, lng: -6.434447}},
-         {title: 'Tablas de Daimiel', location: {lat: 39.139911, lng: -3.697066}},
-         {title: 'Timanfaya', location: {lat: 29.010115, lng: -13.734676}},
-         {title: 'Garajonay', location: {lat: 28.128109, lng: -17.237483}},
-         {title: 'Archipiélago de Cabrera', location: {lat:  39.15, lng: 2.95}},
-         {title: 'Cabañeros', location: {lat: 39.409941, lng: -4.506932}},
-         {title: 'Sierra Nevada', location: {lat: 37.041616, lng: -3.137817}},
-         {title: 'Islas Atlánticas de Galicia', location: {lat: 42.377719, lng: -8.936686}},
-         {title: 'Monfragüe', location: {lat: 39.861607, lng: -6.110294}},
-         {title: 'Sierra de Guadarrama', location: {lat: 40.846081, lng: -3.941941}}
+         {
+            title: 'Picos de Europa',
+            wikiTitle: 'Picos_de_Europa_National_Park',
+            location: {lat: 43.187216, lng: -4.821524}
+         },
+         {
+            title: 'Ordesa Y Monte Perdido',
+            wikiTitle: 'Ordesa_y_Monte_Perdido_National_Park',
+            location: {lat: 42.627341, lng: -0.111204}
+         },
+         {
+            title: 'Teide',
+            wikiTitle: 'Teide_National_Park',
+            location: {lat: 28.272338, lng: -16.642508}
+         },
+         {
+            title: 'Caldera de Taburiente',
+            wikiTitle: 'Caldera_de_Taburiente_National_Park',
+            location: {lat: 28.722222, lng: -17.876111}
+         },
+         {
+            title: 'Aigüestortes i Estany of Saint Maurici',
+            wikiTitle: 'Aigüestortes_i_Estany_de_Sant_Maurici_National_Park',
+            location: {lat: 42.575027, lng: 0.934498}
+         },
+         {
+            title: 'Doñana',
+            wikiTitle: 'Doñana_National_Park',
+            location: {lat: 37.042729, lng: -6.434447}
+         },
+         {
+            title: 'Tablas de Daimiel',
+            wikiTitle: 'Tablas_de_Daimiel_National_Park',
+            location: {lat: 39.139911, lng: -3.697066}
+         },
+         {
+            title: 'Timanfaya',
+            wikiTitle: 'Timanfaya_National_Park',
+            location: {lat: 29.010115, lng: -13.734676}
+         },
+         {
+            title: 'Garajonay',
+            wikiTitle: 'Garajonay_National_Park',
+            location: {lat: 28.128109, lng: -17.237483}
+         },
+         {
+            title: 'Archipiélago de Cabrera',
+            wikiTitle: 'Cabrera_Archipelago_Maritime-Terrestrial_National_Park',
+            location: {lat:  39.15, lng: 2.95}
+         },
+         {
+            title: 'Cabañeros',
+            wikiTitle: 'Cabañeros_National_Park',
+            location: {lat: 39.409941, lng: -4.506932}
+         },
+         {
+            title: 'Sierra Nevada',
+            wikiTitle: 'Sierra_Nevada_National_Park_(Spain)',
+            location: {lat: 37.041616, lng: -3.137817}
+         },
+         {
+            title: 'Islas Atlánticas de Galicia',
+            wikiTitle: 'Atlantic_Islands_of_Galicia_National_Park',
+            location: {lat: 42.377719, lng: -8.936686}
+         },
+         {
+            title: 'Monfragüe',
+            wikiTitle: 'Monfragüe',
+            location: {lat: 39.861607, lng: -6.110294}
+         },
+         {
+            title: 'Sierra de Guadarrama',
+            wikiTitle: 'Guadarrama_National_Park',
+            location: {lat: 40.846081, lng: -3.941941}
+         }
 
         ],
         markers:[]
@@ -40,17 +100,21 @@ class App extends Component {
         this.map = map;
         const markers = [];
         let bounds = new window.google.maps.LatLngBounds();
+        var largeInfowindow = new window.google.maps.InfoWindow();
         for (var i = 0; i < this.state.locations.length; i++) {
             const title = this.state.locations[i].title;
             const position = this.state.locations[i].location;
+            const wikiTitle = this.state.locations[i].wikiTitle;
             const marker = new window.google.maps.Marker({
                 map: map,
                 position: position,
                 title: title,
+                wikiTitle: wikiTitle,
                 animation: window.google.maps.Animation.DROP,
                 id: i
             });
             markers.push(marker);
+            marker.addListener('click',()=> this.populateInfoWindow(marker,largeInfowindow))
             bounds.extend(markers[i].position);
 
         }
@@ -58,7 +122,27 @@ class App extends Component {
         this.setState({ markers: markers })
 
 
+
     }
+
+    populateInfoWindow = (marker,infowindow) => {
+
+            if (infowindow.marker !== marker) {
+                infowindow.marker = marker;
+                WikiSearch.getInfoWindowsSummary(marker.wikiTitle)
+                .then(summary => {
+                    const content = `<div id="infowindow"> <h2> ${marker.title} </h2>
+                    <p> ${summary} </p>
+                    <div>`
+                    infowindow.setContent(content);
+                    infowindow.open(this.map, marker);
+
+                })
+            }
+
+    }
+
+
 
     updateMapMarkers = (filteredLocations) => {
 
