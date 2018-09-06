@@ -41,7 +41,7 @@ class SearchLocation extends Component {
         return (
             <input className="search-input"
                 type='text'
-                placeholder="search location..."
+                placeholder="search park..."
                 onChange={(event) =>this.updateQuery(event.target.value,onFilterLocation)}
                 >
 
