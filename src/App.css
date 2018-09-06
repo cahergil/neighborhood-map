@@ -1,13 +1,19 @@
 /*base color  http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF AA3939*/
 * {
+
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+
 }
 
+
 #root {
+
 	height: 100%;
+
 }
+
 
 .App {
 
@@ -15,20 +21,16 @@
 	text-align: center;
 	height: 100vh;
 
-
 }
-
 
 
 .sidebar {
 
-
 	width: 25%;
 	background-color: #AA3939;
 
-
-
 }
+
 
 .map {
 
@@ -37,30 +39,39 @@
 
 }
 
+
 .sidebar-header {
+
 	display: flex;
 	min-height: 75px;
 	background: #2e3d49;
 	position: relative;
 	z-index: 11;
+
 }
 
 
 .title {
+
 	margin-left: 15px;
 	margin-right: 15px;
 	text-align: center;
 	padding-top: 10px;
 	color: white;
+
 }
 
+
 @media screen and (min-width: 1025px) {
+
 	.title {
+
 		padding-top: 0px;
 		line-height: 75px;
 		margin-left: auto;
 		margin-right: auto;
 		text-align: center;
+
 	}
 }
 
@@ -74,10 +85,11 @@ nav {
 	z-index: 10;
 	position: relative;
 
-
 }
 
+
 .search-input {
+
 	border: none;
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -93,23 +105,39 @@ nav {
 /*https://stackoverflow.com/questions/7381446/center-html-input-text-field-placeholder*/
 /*https://davidwalsh.name/html5-placeholder-css*/
 .search-input::-webkit-input-placeholder {
+
 	color: #d46a6a;
 	text-align: center;
-}
-.search-input:-moz-placeholder { /* Firefox 18- */
-	color: #d46a6a;
-	text-align: center;
-}
-.search-input::-moz-placeholder {  /* Firefox 19+ */
-	color: #d46a6a;
-	text-align: center;
-}
-.search-input:-ms-input-placeholder {
-	color: #d46a6a;
-	text-align: center;
+
 }
 
+
+.search-input:-moz-placeholder { /* Firefox 18- */
+
+	color: #d46a6a;
+	text-align: center;
+
+}
+
+
+.search-input::-moz-placeholder {  /* Firefox 19+ */
+
+	color: #d46a6a;
+	text-align: center;
+
+}
+
+
+.search-input:-ms-input-placeholder {
+
+	color: #d46a6a;
+	text-align: center;
+
+}
+
+
 .menu-list {
+
 	display: block;
 	background-color: #AA3939;
 	list-style: none;
@@ -117,6 +145,7 @@ nav {
 	margin:0;
 	transition:all 0.5s ease-in-out;
 	transform: translateY(0px);
+
 }
 
 
@@ -124,13 +153,21 @@ nav {
 
 	margin-top:10px;
 	padding:0 20px;
+
 }
 
+
 .menu-items:nth-child(1) {
+
 	margin-top: 10px;
+
 }
+
+
 .menu-items:last-child {
+
 	margin-bottom: 0px;
+
 }
 
 
@@ -138,74 +175,98 @@ nav {
 
 	color: #ffaaaa;
 	text-decoration: none;
+
 }
+
 
 .menu-items a:visited {
+
 	color: #ffaaaa;
+
 }
+
 
 .menu-items a:hover {
+
 	color: #550000;
+
 }
 
+
 #infowindow {
+
 	max-height: 400px ;
 	width: 400px;
 	overflow-y:auto;
+
 }
-
-
-
 
 
 @media screen and (max-width: 900px) {
 
 	.App {
+
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
 
 	}
+
+
 	.sidebar {
 
 		height: 75px;
 		width: 100%;
 
-
-
 	}
+
+
 	.map {
+
 		height: 100%;
 		width: 100%;
 		position:relative;
 		z-index: 12;
+
 	}
 
 
 	.sidebar-header {
+
 		display: flex;
 		height: 75px;
 		background: #2e3d49;
 		position: relative;
 		z-index: 11;
+
 	}
+
+
 	.title {
+
 		margin-left: auto;
 		margin-right: auto;
 		text-align: center;
 		padding-top: 20px;
 		color: white;
+
 	}
+
+
 	@media screen and (max-width:500px) {
 
 		.title {
+
 			text-align: left;
 			margin-left: 10px;
 			margin-right: 10px;
+
 		}
 	}
 
+
 	#closebtn {
+
 	    height:25px;
 	    width:35px;
 	    position: absolute;
@@ -218,8 +279,14 @@ nav {
 	    z-index:100;
 	    cursor:pointer;
 	    transition: background-position .3s;
+
 	}
-	.line1, .line2, .line3 {
+
+
+	.line1,
+	.line2,
+	.line3 {
+
 		margin-top:7px;
 		background-color:#fff;
 		width:35px;
@@ -229,25 +296,33 @@ nav {
 		opacity:1.0;
 		border-radius:15%;
 		transition: all .3s;
+
 	}
+
+
 	.line1.active {
+
 	  transform: rotate(270deg);
 	  opacity:0.0;
 	  top: 10px;
+
 	}
+
 
 	.line2.active {
+
 	  transform: rotate(45deg);
 	  top: 3px;
+
 	}
+
 
 	.line3.active {
+
 	  transform: rotate(-45deg);
 	  top:-7px;
+
 	}
-
-
-
 
 
 	nav {
@@ -262,6 +337,8 @@ nav {
 		transform: translateY(0px);
 
 	}
+
+
 	nav.hidden {
 
 		display: flex;
@@ -271,9 +348,12 @@ nav {
 		z-index: 10;
 		position: relative;
 		transform: translateY(-1000px);
+
 	}
 
+
 	.menu-list {
+
 		display: block;
 		background-color: #AA3939;
 		list-style: none;
@@ -282,18 +362,19 @@ nav {
 
 	}
 
-	 .menu-list.hidden {
 
+	.menu-list.hidden {
 
 		background-color: #AA3939;
 		list-style: none;
 		padding:0;
 		margin:0;
 
-
 	}
 
+
 	.search-input {
+
 		border: none;
 		margin-top: 20px;
 		margin-bottom: 10px;
@@ -308,20 +389,34 @@ nav {
 	/*https://stackoverflow.com/questions/7381446/center-html-input-text-field-placeholder*/
 	/*https://davidwalsh.name/html5-placeholder-css*/
 	.search-input::-webkit-input-placeholder {
+
 		color: #d46a6a;
 		text-align: center;
+
 	}
+
+
 	.search-input:-moz-placeholder { /* Firefox 18- */
+
 		color: #d46a6a;
 		text-align: center;
+
 	}
+
+
 	.search-input::-moz-placeholder {  /* Firefox 19+ */
+
 		color: #d46a6a;
 		text-align: center;
+
 	}
+
+
 	.search-input:-ms-input-placeholder {
+
 		color: #d46a6a;
 		text-align: center;
+
 	}
 
 
@@ -331,11 +426,18 @@ nav {
 
 	}
 
+
 	.menu-items:nth-child(1) {
+
 		margin-top: 10px;
+
 	}
+
+
 	.menu-items:last-child {
+
 		margin-bottom: 20px;
+
 	}
 
 
@@ -343,20 +445,30 @@ nav {
 
 		color: #ffaaaa;
 		text-decoration: none;
+
 	}
+
 
 	.menu-items a:visited {
+
 		color: #ffaaaa;
+
 	}
+
 
 	.menu-items a:hover {
+
 		color: #550000;
+
 	}
 
+
 	#infowindow {
+
 		max-height: 200px ;
 		width: 300px;
 		overflow-y:auto;
+
 	}
 
 }
