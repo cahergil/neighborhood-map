@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 class ListItem extends Component {
 
-
+    static propTypes = {
+        onClick: PropTypes.func.isRequired,
+        location: PropTypes.string.isRequired
+    }
 
 
     render() {

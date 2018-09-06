@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp';
 
 class SearchLocation extends Component {
@@ -7,6 +8,14 @@ class SearchLocation extends Component {
         super(props);
         this.showingLocations = [];
     }
+
+    static propTypes = {
+
+        locations: PropTypes.array.isRequired,
+        onFilterLocation: PropTypes.func.isRequired
+
+    }
+
     state = {
 
         query: ''

@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import SearchLocation from './SearchLocation.js';
 import ListItem from './ListItem.js'
 
 class SideBar extends Component {
 
+    static propTypes = {
+
+        locations: PropTypes.array.isRequired,
+        onGetFilteredLocations: PropTypes.func.isRequired,
+        onClick: PropTypes.func.isRequired
+
+    }
 
     state = {
 

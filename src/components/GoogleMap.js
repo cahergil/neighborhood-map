@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 //https://stackoverflow.com/questions/39056498/export-default-not-working-webpack-reactjs
 import {loadGoogleMap} from '../utils/load-google-map.js';
 //https://cleverbeagle.com/blog/articles/tutorial-how-to-load-third-party-scripts-dynamically-in-javascript
 export class GoogleMap extends Component {
 
+    static propTypes = {
+        id: PropTypes.string.isRequired,
+        onBoundsChanged: PropTypes.func.isRequired,
+        onInitMap: PropTypes.func.isRequired
 
+    }
     componentDidMount() {
         loadGoogleMap(() => {
 
