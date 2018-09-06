@@ -69,7 +69,9 @@ class SideBar extends Component {
                         {
                             filteredLocations.map( (location) => (
                                 <li className="menu-items" key={location.title}>
-                                    <ListItem location={location.title}/>
+                                    <ListItem
+                                        onClick={this.props.onClick}
+                                        location={location.title}/>
                                 </li>
                             ))
 

@@ -9,6 +9,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.map = {};
+        this.infoWindow = {};
     }
 
     state = {
@@ -101,6 +102,7 @@ class App extends Component {
         const markers = [];
         let bounds = new window.google.maps.LatLngBounds();
         var largeInfowindow = new window.google.maps.InfoWindow();
+        this.infoWindow = largeInfowindow;
         for (var i = 0; i < this.state.locations.length; i++) {
             const title = this.state.locations[i].title;
             const position = this.state.locations[i].location;
@@ -195,12 +197,33 @@ class App extends Component {
 
     }
 
+    displayMarker = (e, locTitle) => {
+        e.preventDefault();
+        const markers =this.state.markers;
+        let bounds = new window.google.maps.LatLngBounds();
+        let marker;
+        for(let i = 0; i< markers.length; i++) {
+            if( markers[i].title === locTitle) {
+                bounds.extend(markers[i].position);
+                marker = markers[i];
+            }
+        }
+        this.map.fitBounds(bounds);
+        this.map.setZoom(9);
+
+        marker.setAnimation(window.google.maps.Animation.BOUNCE);
+        setTimeout(()=> marker.setAnimation(null),2000);
+        this.populateInfoWindow(marker,this.infoWindow);
+
+    }
+
     render() {
         return (
         <div className="App" >
 
 
                 <SideBar
+                    onClick={this.displayMarker}
                     onGetFilteredLocations={this.updateMapMarkers}
                     locations={this.state.locations}
 
