@@ -175,7 +175,7 @@ nav {
 
 	}
 	.map {
-		height: 87%;
+		height: 100%;
 		width: 100%;
 		position:relative;
 		z-index: 12;
