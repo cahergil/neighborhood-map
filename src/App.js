@@ -87,7 +87,7 @@ class App extends Component {
          },
          {
             title: 'Sierra de Guadarrama',
-            wikiTitle: 'Guadarrama_National_Park',
+            wikiTitle: 'Sierra de Guadarrama',
             location: {lat: 40.846081, lng: -3.941941}
          }
 
@@ -97,6 +97,12 @@ class App extends Component {
 
     }
 
+    /**
+     * Initialize the state of the map at the beginning of the app laying out
+     * the markers, setting its listener and computing the boundaries of the
+     * map to center it on the browser
+     * @param  {google.maps.Map} map from GoogleMap.js
+     */
     initMap = (map) => {
         this.map = map;
         const markers = [];
@@ -127,6 +133,12 @@ class App extends Component {
 
     }
 
+    /**
+     * Fetch asynchronously the summary of a marker from Wikipedia,
+     * populates the infowindow with the summary and shows it on the screen
+     * @param  {google.maps.Marker} marker     marker to be associated with
+     * @param  {google.maps.InfoWindow} infowindow global variable
+     */
     populateInfoWindow = (marker,infowindow) => {
 
             if (infowindow.marker !== marker) {
@@ -145,7 +157,12 @@ class App extends Component {
     }
 
 
-
+    /**
+     * Shows the proper markers according to the locations filtered by the user
+     * in the search component. Sets a certain zoom level when there are 1 or
+     * 0 markers on the screen and compute the boundaries of the map
+     * @param  {array} filteredLocations array of filtered locations
+     */
     updateMapMarkers = (filteredLocations) => {
 
         const markers = this.state.markers;
@@ -185,6 +202,10 @@ class App extends Component {
 
     }
 
+    /**
+     * Callback for resize event on windows object. Compute again the
+     * boundaries of the map according to the new browser size
+     */
     updateMapBounds = () => {
         const markers = this.state.markers;
         let bounds = new window.google.maps.LatLngBounds();
@@ -197,6 +218,15 @@ class App extends Component {
 
     }
 
+    /**
+     * Displays the marker associated with the click event on a link
+     * in the sidebar. Searches for a marker in the state with the
+     * same location title as the user has clicked. Once it has been
+     * located, computes the new boundaries of the map and sets the
+     * zoom level. Sets a bounce effect and shows the infowindow
+     * @param  {event} e        click event
+     * @param  {string} locTitle title associated with the selected marker
+     */
     displayMarker = (e, locTitle) => {
         e.preventDefault();
         const markers =this.state.markers;

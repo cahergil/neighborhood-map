@@ -1,3 +1,6 @@
+/**
+ * Utility class to make fetch through the wikipedia api
+ */
 class WikiSearch {
 
     static get = (url) => {
@@ -10,7 +13,11 @@ class WikiSearch {
         return WikiSearch.get(url).then( (response) => response.json())
     }
 
-
+    /**
+     * Gets the wikipedia summary of a string passed to this method
+     * It uses origin=* according to the cors policy of wikipedia
+     * @type {string} title to look for in wikipedia url
+     */
     static getInfoWindowsSummary = (markerTitle) => {
 
                 const url=`https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${markerTitle}`;
