@@ -267,15 +267,15 @@ nav {
 
 	#closebtn {
 
-	    height:25px;
+	    height:35px;
 	    width:35px;
 	    position: absolute;
 	    text-decoration:none;
 	    top: 17px;
-	    right: 0;
+	    right: 10px;
 	    font-size: 36px !important;
-	    margin-right: 10px;
-		margin-left: 20px;
+	    /* margin-right: 10px; */
+		/* margin-left: 10px; */
 	    z-index:100;
 	    cursor:pointer;
 	    transition: background-position .3s;

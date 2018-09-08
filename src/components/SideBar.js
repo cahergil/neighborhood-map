@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import SearchLocation from './SearchLocation.js';
 import ListItem from './ListItem.js'
+import Hamburger from './Hamburger.js'
 
 class SideBar extends Component {
 
@@ -23,28 +24,7 @@ class SideBar extends Component {
         this.setState({filteredlocations: [...this.props.locations]})
     }
 
-    navToggle = () => {
 
-        const closeBtn = document.querySelector('#closebtn');
-        const menu = document.querySelector('nav');
-        const menuIcon = closeBtn.children;
-        for (let i = 0; i < menuIcon.length; i++) {
-            menuIcon[i].classList.toggle("active");
-        }
-        const map = document.querySelector('.map');
-        var styles = window.getComputedStyle(map);
-
-        if(parseInt(styles.zIndex,10) === 9) {
-            setTimeout(()=>(map.style.zIndex = 12),500);
-
-        } else {
-            map.style.zIndex = 9
-
-        }
-        menu.classList.toggle('hidden');
-
-
-    }
 
     filterLocations = (locations) => {
         const onGetFilteredLocations = this.props.onGetFilteredLocations;
@@ -62,11 +42,7 @@ class SideBar extends Component {
             <aside className="sidebar">
                 <header className="sidebar-header">
                     <h2 className="title">Spains National Parks</h2>
-                    <span id="closebtn" onClick={this.navToggle}>
-                        <span className="line1"></span>
-                        <span className="line2"></span>
-                        <span className="line3"></span>
-                    </span>
+                    <Hamburger />
                 </header>
                 <nav className="hidden">
                     <ul className="menu-list">

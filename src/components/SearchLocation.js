@@ -51,6 +51,7 @@ class SearchLocation extends Component {
             <input className="search-input"
                 type='text'
                 placeholder="search park..."
+                aria-label="search park"
                 onChange={(event) =>this.updateQuery(event.target.value,onFilterLocation)}
                 >
 
