@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class ListItem extends Component {
-
-    static propTypes = {
-        onClick: PropTypes.func.isRequired,
-        location: PropTypes.string.isRequired
-    }
+const ListItem = (props) => {
 
 
-    render() {
-        const locTitle = this.props.location;
         return (
-            <a href="" onClick={(e)=> this.props.onClick(e,locTitle)}> {locTitle}</a>
+            <a href="" onClick={(e)=> props.onClick(e,props.location)}> {props.location}</a>
         );
-    }
 
+
+};
+ListItem.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    location: PropTypes.string.isRequired
 }
 
 export default ListItem;
