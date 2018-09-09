@@ -42,7 +42,7 @@ class SideBar extends Component {
             <aside className="sidebar">
                 <header className="sidebar-header">
                     <h2 className="title">Spains National Parks</h2>
-                    <Hamburger />
+                    <Hamburger onToggleHamburger={this.props.onToggleHamburger}/>
                 </header>
                 <nav className="hidden">
                     <ul className="menu-list">

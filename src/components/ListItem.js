@@ -5,7 +5,9 @@ const ListItem = (props) => {
 
 
         return (
-            <a href="" onClick={(e)=> props.onClick(e,props.location)}> {props.location}</a>
+            <a href="" onClick={(e)=>
+                props.onClick(e,props.location) }>
+            {props.location}</a>
         );
 
 

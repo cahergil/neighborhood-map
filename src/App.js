@@ -229,6 +229,7 @@ class App extends Component {
      */
     displayMarker = (e, locTitle) => {
         e.preventDefault();
+        this.navToggle();
         const markers =this.state.markers;
         let bounds = new window.google.maps.LatLngBounds();
         let marker;
@@ -247,6 +248,32 @@ class App extends Component {
 
     }
 
+    navToggle = () => {
+        console.log('navToggle');
+        const closeBtn = document.querySelector('#closebtn');
+        const menu = document.querySelector('nav');
+        const menuIcon = closeBtn.children;
+        for (let i = 0; i < menuIcon.length; i++) {
+            menuIcon[i].classList.toggle("active");
+        }
+        const map = document.querySelector('.map');
+        var styles = window.getComputedStyle(map);
+
+        if(parseInt(styles.zIndex,10) === 9) {
+            setTimeout(()=>(map.style.zIndex = 12),500);
+
+        } else {
+            map.style.zIndex = 9
+
+        }
+        menu.classList.toggle('hidden');
+
+        let pressed = (closeBtn.getAttribute("aria-pressed") === "true")
+        closeBtn.setAttribute('aria-pressed',!pressed);
+
+
+    }
+
     render() {
         return (
         <div className="App" >
@@ -255,6 +282,7 @@ class App extends Component {
                 <SideBar
                     onClick={this.displayMarker}
                     onGetFilteredLocations={this.updateMapMarkers}
+                    onToggleHamburger={this.navToggle}
                     locations={this.state.locations}
 
                 />

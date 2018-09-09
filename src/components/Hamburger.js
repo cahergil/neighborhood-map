@@ -1,4 +1,6 @@
 import React  from 'react';
+import PropTypes from 'prop-types';
+
 
 const  Hamburger = (props) => {
 
@@ -8,34 +10,13 @@ const  Hamburger = (props) => {
         if(event.key === ' ' || event.key === 'Enter') {
             // Prevent the default action to stop scrolling when space is pressed
             event.preventDefault();
-            navToggle();
+            props.onToggleHamburger();
+
         }
     }
 
-    const navToggle = () => {
-
-        const closeBtn = document.querySelector('#closebtn');
-        const menu = document.querySelector('nav');
-        const menuIcon = closeBtn.children;
-        for (let i = 0; i < menuIcon.length; i++) {
-            menuIcon[i].classList.toggle("active");
-        }
-        const map = document.querySelector('.map');
-        var styles = window.getComputedStyle(map);
-
-        if(parseInt(styles.zIndex,10) === 9) {
-            setTimeout(()=>(map.style.zIndex = 12),500);
-
-        } else {
-            map.style.zIndex = 9
-
-        }
-        menu.classList.toggle('hidden');
-
-        let pressed = (closeBtn.getAttribute("aria-pressed") === "true")
-        closeBtn.setAttribute('aria-pressed',!pressed);
-
-
+    const handleClick= () => {
+        props.onToggleHamburger();
     }
 
     return (
@@ -44,7 +25,7 @@ const  Hamburger = (props) => {
                  tabIndex="0"
                  aria-pressed="false"
                  aria-label="toggle button"
-                 onClick={navToggle}
+                 onClick={handleClick}
                  onKeyPress={handleKeyPress}
                 >
                 <span className="line1"></span>
@@ -54,5 +35,9 @@ const  Hamburger = (props) => {
         )
 
 };
+Hamburger.propTypes = {
+
+    onToggleHamburger: PropTypes.func.isRequired
+}
 
 export default Hamburger;
