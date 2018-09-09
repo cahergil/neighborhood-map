@@ -141,18 +141,18 @@ class App extends Component {
      */
     populateInfoWindow = (marker,infowindow) => {
 
-            if (infowindow.marker !== marker) {
-                infowindow.marker = marker;
-                WikiSearch.getInfoWindowsSummary(marker.wikiTitle)
-                .then(summary => {
-                    const content = `<div tabIndex="0" id="infowindow"> <h2> ${marker.title} </h2>
-                    <p> ${summary} </p>
-                    <div>`
-                    infowindow.setContent(content);
-                    infowindow.open(this.map, marker);
 
-                })
-            }
+        infowindow.marker = marker;
+        WikiSearch.getInfoWindowsSummary(marker.wikiTitle)
+        .then(summary => {
+            const content = `<div tabIndex="0" id="infowindow"> <h2> ${marker.title} </h2>
+            <p> ${summary} </p>
+            <div>`
+            infowindow.setContent(content);
+            infowindow.open(this.map, marker);
+
+        })
+
 
     }
 
