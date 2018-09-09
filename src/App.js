@@ -144,9 +144,13 @@ class App extends Component {
 
         infowindow.marker = marker;
         WikiSearch.getInfoWindowsSummary(marker.wikiTitle)
-        .then(summary => {
+        .then(queryResult => {
+            if(queryResult === 'error') {
+                queryResult = `Oops, something went wrong, could not load data from the server`
+            }
             const content = `<div tabIndex="0" id="infowindow"> <h2> ${marker.title} </h2>
-            <p> ${summary} </p>
+            <p style="color:blue">Data courtesy of Wikipedia</p>
+            <p> ${queryResult} </p>
             <div>`
             infowindow.setContent(content);
             infowindow.open(this.map, marker);

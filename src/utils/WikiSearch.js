@@ -37,6 +37,7 @@ class WikiSearch {
                 })
                 .catch(e => {
                     console.log('error fetching data:', e)
+                    e = 'error'
                     return e;
                 })
 
