@@ -16,7 +16,7 @@ The purpose of this project is to strengthen the knowledge of React.
 
 * Clone or download this repo
 * install all project dependencies with `npm install`
-* start the development server with `npm run start`: The app will be running at `localhost:3000`
+* start the development server with `npm start`: The app will be running at `localhost:3000`
 * build for production with `npm run build`(Service worker works in this mode). Follow instructions
 on screen to set up a local server.
 
