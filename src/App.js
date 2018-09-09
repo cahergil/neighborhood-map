@@ -145,7 +145,7 @@ class App extends Component {
                 infowindow.marker = marker;
                 WikiSearch.getInfoWindowsSummary(marker.wikiTitle)
                 .then(summary => {
-                    const content = `<div id="infowindow"> <h2> ${marker.title} </h2>
+                    const content = `<div tabIndex="0" id="infowindow"> <h2> ${marker.title} </h2>
                     <p> ${summary} </p>
                     <div>`
                     infowindow.setContent(content);
@@ -248,6 +248,9 @@ class App extends Component {
 
     }
 
+    /**
+     * Toggles Hamburger icon
+     */
     navToggle = () => {
         console.log('navToggle');
         const closeBtn = document.querySelector('#closebtn');
