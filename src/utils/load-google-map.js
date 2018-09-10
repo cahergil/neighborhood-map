@@ -13,6 +13,9 @@ export const loadGoogleMap = (callback) => {
      };
      script.onerror = () => {
          console.log('Could not load script ', script.src);
+         // console.log(error);
+         const error = "error trying to load google maps script"
+         if(callback) callback(error)
      }
      document.body.appendChild(script);
 

@@ -11,9 +11,15 @@ export class GoogleMap extends Component {
         onInitMap: PropTypes.func.isRequired
 
     }
-    componentDidMount() {
-        loadGoogleMap(() => {
 
+    state = {
+
+        loadError: false
+    }
+
+    componentDidMount() {
+        loadGoogleMap((error) => {
+            if(!error) {
             const map = new window.google.maps.Map(document.querySelector('.map'), {
                     center: {lat: -34.397, lng: 150.644},
                     zoom: 8
@@ -23,7 +29,10 @@ export class GoogleMap extends Component {
             // https://developers.google.com/maps/documentation/javascript/examples/event-domListener
             // uses 'resize' of window object
             window.google.maps.event.addDomListener(window,'resize',this.props.onBoundsChanged);
+            } else {
 
+                this.setState({loadError:true})
+            }
         })
 
     }
@@ -38,14 +47,32 @@ export class GoogleMap extends Component {
 
     render() {
 
+        if(this.state.loadError === false) {
 
-        return (
+            return (
 
-            <div className={this.props.id}>
-            </div>
+                <div className={this.props.id}>
+                </div>
 
 
-        )
+            )
+        } else {
+
+            return (
+
+                <div className={this.props.id}>
+                    <div className="map-error">
+                        <h2>Oops, Something went wrong </h2>
+                        <br></br>
+                        <p>This page didn't load Google Maps correctly</p>
+                    </div>
+
+                </div>
+
+
+            )
+
+        }
     }
 
 }

@@ -40,6 +40,27 @@
 }
 
 
+.map-error {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #E0E0E0;
+	height: 100%;
+
+}
+
+
+.map-error > p {
+	color:#616161;
+}
+
+
+.map-error > h2 {
+	color:#616161;
+}
+
+
 .sidebar-header {
 
 	display: flex;
